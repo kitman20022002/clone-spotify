@@ -1,27 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './HomePage.css';
-import { RouteComponentProps } from 'react-router-dom';
+import SpotifyWebApi from 'spotify-web-api-js';
 import Login from '../../component/Login/Login';
+import { getTokenFromUrl } from '../../api/spotify';
+import { useDataLayerValue } from '../../DataLayer';
 
-interface IHomeProps extends RouteComponentProps<{ title: string }> {
+const spotify = new SpotifyWebApi();
 
-}
+function HomePage() {
+  const [token, setToken] = useState(null);
+  const [{ user }, dispatch] = useDataLayerValue();
 
-interface IHomeState {
-  data: [],
-  cacheData: any,
-  errorMessage: string,
-}
+  useEffect(() => {
+    const hash: any = getTokenFromUrl();
+    window.location.hash = '';
+    const t = hash.access_token;
+    if (t) {
+      dispatch({
+        type: 'SET_TOKEN',
+        token: t,
+      });
+      setToken(t);
+      spotify.setAccessToken(t);
 
-// eslint-disable-next-line react/prefer-stateless-function
-class HomePage extends React.Component<IHomeProps, IHomeState> {
-  render() {
-    return (
-      <div>
-        <Login />
-      </div>
-    );
-  }
+      spotify.getMe().then((us) => {
+        dispatch({
+          type: 'SET_USER',
+          user: us,
+        });
+      });
+      console.log(user);
+    }
+  }, []);
+
+  return (
+    <div>
+      {
+        token ? (
+          <Login />
+        ) : (
+          <Login />
+        )
+      }
+    </div>
+  );
 }
 
 export default HomePage;
