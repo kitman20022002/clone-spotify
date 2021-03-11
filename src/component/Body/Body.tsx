@@ -1,10 +1,11 @@
 import React from 'react';
 import './Body.css';
+import Header from '../Header/Header';
 
 function Body() {
   return (
     <div className="body">
-      Body
+      <Header />
     </div>
   );
 }
