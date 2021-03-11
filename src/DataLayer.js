@@ -5,7 +5,7 @@ import React,
   useReducer,
 } from 'react';
 
-export const DataLayerContext = createContext(null);
+export const DataLayerContext = createContext();
 
 export const DataLayer = ({ initialState, reducer, children }) => (
   <DataLayerContext.Provider value={useReducer(reducer, initialState)}>
