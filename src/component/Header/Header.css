@@ -2,17 +2,32 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  align-items: center;
 }
-
 .header__left {
   flex: 0.5;
-  min-width: 70px;
-  background-color: white;
   color: gray;
-  border-radus: 30px;
-  padding: 10px;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+
+.header__left .MuiSvgIcon-root{
+  position: absolute;
+  left:20px;
+}
+
+
+.header__left input{
+  padding: 6px 48px;
+  min-width: 30px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+.header__left input:focus{
+  outline:none;
 }
 
 .header__left > input {
@@ -27,6 +42,16 @@
 
 .header__right > h4 {
   margin-left: 10px;
+}
+
+@media screen and (max-width: 814px) {
+  .header__right > h4{
+    display: none;
+  }
+
+  .header__left{
+    flex:0.9;
+  }
 }
 
 

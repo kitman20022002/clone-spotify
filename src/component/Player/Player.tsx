@@ -9,7 +9,6 @@ interface IPlayerProps {
 }
 
 function Player(props: IPlayerProps) {
-  // eslint-disable-next-line no-unused-vars
   const { spotify } = props;
 
   return (
@@ -18,7 +17,7 @@ function Player(props: IPlayerProps) {
         <SideBar />
         <Body />
       </div>
-      <Footer />
+      <Footer spotify={spotify} />
     </div>
   );
 }
