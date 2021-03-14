@@ -17,6 +17,28 @@
   max-width: 300px;
 }
 
+.footer__albumLogo {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+}
+
+.footer__songInfo{
+  margin: 0 14px;
+}
+
+.footer__left h4{
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0;
+}
+
+.footer__left p{
+  font-size: 11px;
+  line-height: 16px;
+  margin: 0;
+}
+
 .footer__center {
   flex: 0.4;
   padding: 0 100px;
@@ -35,12 +57,6 @@
   color: white;
 }
 
-.footer__albumLogo {
-  height: 60px;
-  width: 60px;
-  margin-left: 20px;
-  object-fit: contain;
-}
 
 .footer__green, .MuiSlider-root {
   color: #1ed15e!important;
@@ -50,4 +66,12 @@
 .footer__green:hover {
   transition: transform 0.2s ease-in-out;
   transform: scale(1.2) !important;
+}
+
+.footer__right .MuiSvgIcon-root{
+  color:#b3b3b3;
+}
+
+.footer__right .MuiSvgIcon-root:hover{
+  color:white;
 }

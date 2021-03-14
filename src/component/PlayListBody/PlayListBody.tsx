@@ -1,11 +1,11 @@
 import React from 'react';
-import './Body.css';
+import './PlayListBody.css';
 import { Favorite, MoreHoriz, PlayCircleFilled } from '@material-ui/icons';
 import Header from '../Header/Header';
 import { useDataLayerValue } from '../../DataLayer';
 import SongRow from '../SongRow/SongRow';
 
-function Body() {
+function PlayListBody() {
   const [{ discoverWeekly }] = useDataLayerValue();
 
   return (
@@ -26,8 +26,8 @@ function Body() {
           <MoreHoriz />
         </div>
         <div className="body__songsList">
-          {discoverWeekly?.tracks.items.map((item:any) => (
-            <SongRow track={item.track} />
+          {discoverWeekly?.tracks.items.map((item:any, index:number) => (
+            <SongRow track={item.track} index={index + 1} />
           ))}
         </div>
       </div>
@@ -35,4 +35,4 @@ function Body() {
   );
 }
 
-export default Body;
+export default PlayListBody;

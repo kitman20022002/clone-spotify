@@ -4,11 +4,16 @@ const redirectUri = 'http://localhost:3011/';
 const clientId = '006caa563690487ca0cdc763d226c30b';
 
 const scopes = [
+  'streaming',
+  'user-read-email',
+  'user-read-private',
+  'user-read-playback-state',
+  'user-modify-playback-state',
   'user-read-currently-playing',
   'user-read-recently-played',
-  'user-read-playback-state',
   'user-top-read',
-  'user-modify-playback-state',
+  'user-library-read',
+  'user-library-modify',
 ];
 
 export const getTokenFromUrl = () => window.location.hash.substr(1).split('&').reduce(
