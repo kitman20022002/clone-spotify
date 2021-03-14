@@ -19,8 +19,12 @@ function SideBar() {
         className="sidebar__logo"
       />
       <SideBarOption title="Home" Icon={HomeIcon} onClick={() => history.push('/')} />
-      <SideBarOption title="Search" Icon={SearchIcon} />
-      <SideBarOption title="Your Library" Icon={LibraryMusicIcon} />
+      <SideBarOption title="Search" Icon={SearchIcon} onClick={() => history.push('/search')} />
+      <SideBarOption
+        title="Your Library"
+        Icon={LibraryMusicIcon}
+        onClick={() => history.push('/collection/playlists')}
+      />
 
       <br />
       <strong className="sidebar__title">PLAYLISTS</strong>
