@@ -13,7 +13,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route path="/" exact render={() => <HomePage spotify={spotify} />} />
-        <Route path="/queue" exact render={() => <QueuePage spotify={spotify} />} />
+        <Route path="/queue" render={() => <QueuePage spotify={spotify} />} />
         <Route component={ErrorPage} />
       </Switch>
     </Router>
