@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
+
 export const truncate = (str:string, max:number, suffix:string) =>
   // eslint-disable-next-line max-len,implicit-arrow-linebreak
   (str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`);
@@ -26,3 +27,7 @@ export const msToTime = (duration: number) => {
 
   return portions.join(':');
 };
+
+export const REPEAT_MODE = [
+  'off ', 'track ', 'context ',
+];

@@ -3,11 +3,13 @@ import './SideBar.css';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import { useHistory } from 'react-router-dom';
 import SideBarOption from '../SideBarOption/SideBarOption';
 import { useDataLayerValue } from '../../DataLayer';
 
 function SideBar() {
   const [{ playlists }] = useDataLayerValue();
+  const history = useHistory();
   return (
     <div className="sidebar">
       {/* eslint-disable-next-line max-len */}
@@ -16,7 +18,7 @@ function SideBar() {
         alt=""
         className="sidebar__logo"
       />
-      <SideBarOption title="Home" Icon={HomeIcon} />
+      <SideBarOption title="Home" Icon={HomeIcon} onClick={() => history.push('/')} />
       <SideBarOption title="Search" Icon={SearchIcon} />
       <SideBarOption title="Your Library" Icon={LibraryMusicIcon} />
 
