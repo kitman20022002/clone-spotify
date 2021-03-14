@@ -11,11 +11,13 @@ export const initialState = {
   mute: false,
   previousVolume: -1,
   queueTracks: [],
+  isLiked: false,
+  repeatModeIndex: 0,
   // eslint-disable-next-line max-len
 };
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
 
   switch (action.type) {
     case 'SET_USER':
@@ -52,6 +54,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         item: action.item,
+        isLiked: action.isLiked,
       };
     case 'SET_ACTIVE_DEVICE':
       return {
@@ -74,6 +77,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         queueTracks: action.queueTracks,
+      };
+    case 'SET_LIKE':
+      return {
+        ...state,
+        isLiked: action.isLiked,
+      };
+    case 'SET_REPEAT_MODE':
+      return {
+        ...state,
+        repeatModeIndex: action.repeatModeIndex,
       };
     default:
       return state;

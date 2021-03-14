@@ -29,5 +29,5 @@ export const msToTime = (duration: number) => {
 };
 
 export const REPEAT_MODE = [
-  'off ', 'track ', 'context ',
+  'off', 'track', 'context',
 ];
