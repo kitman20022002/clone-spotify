@@ -1,23 +1,24 @@
 import React from 'react';
-import './SearchPage.css';
+import './LibPage.css';
 import Footer from '../../component/Footer/Footer';
 import SideBar from '../../component/SideBar/SideBar';
 
 interface ISearchPageProps {
   spotify: any,
 }
-function SearchPage(props:ISearchPageProps) {
+
+function LibPage(props:ISearchPageProps) {
   const { spotify } = props;
 
   return (
     <div className="player">
       <div className="player_body">
         <SideBar />
-        <div>Search Body</div>
+        <div>LibBody</div>
       </div>
       <Footer spotify={spotify} />
     </div>
   );
 }
 
-export default SearchPage;
+export default LibPage;
