@@ -1,0 +1,39 @@
+.search_body{
+  background: #121212;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  padding: 30px;
+  height: 100vh;
+  overflow-y: overlay;
+  color: white;
+}
+
+.searchBar{
+  position: relative;
+  max-width: 250px;
+}
+
+.searchBar .MuiSvgIcon-root{
+  position: absolute;
+  left:20px;
+  top:15px;
+  color:black;
+}
+
+
+.searchInput{
+  padding: 6px 48px;
+  min-width: 30px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+.searchInput:focus{
+  outline:none;
+}
+
+.searchInput{
+  border: none;
+  width: 100%;
+}

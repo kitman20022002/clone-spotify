@@ -4,16 +4,18 @@ import { msToTime } from '../../utils/helper';
 
 interface ISongRowProps {
   track: any,
-  index:number,
+  index?:number,
 }
 
 function SongRow(props: ISongRowProps) {
   const { track, index } = props;
   return (
     <div className="songRow">
+      {index && (
       <div className="songRow__number">
         {index}
       </div>
+      )}
       <div className="songRow__album">
         <img src={track.album.images[0].url} alt="" />
       </div>
