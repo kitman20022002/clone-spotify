@@ -2,21 +2,22 @@ import React from 'react';
 import './PlayListBody.css';
 import { Favorite, MoreHoriz, PlayCircleFilled } from '@material-ui/icons';
 import Header from '../Header/Header';
-import { useDataLayerValue } from '../../DataLayer';
 import SongRow from '../SongRow/SongRow';
 
-function PlayListBody() {
-  const [{ discoverWeekly }] = useDataLayerValue();
+type Props = {
+  data: any,
+};
 
+function PlayListBody({ data }: Props) {
   return (
     <div className="body">
       <Header />
       <div className="body__info">
-        <img src={discoverWeekly?.images[0].url} alt="" />
+        <img src={data?.images[0].url} alt="" />
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
-          <h2>Discovery Weekly</h2>
-          <p>{discoverWeekly?.description}</p>
+          <h2>{data?.name}</h2>
+          <p>{data?.description}</p>
         </div>
       </div>
       <div className="body__songs">
@@ -26,8 +27,8 @@ function PlayListBody() {
           <MoreHoriz />
         </div>
         <div className="body__songsList">
-          {discoverWeekly?.tracks.items.map((item:any, index:number) => (
-            <SongRow track={item.track} index={index + 1} />
+          {data?.tracks?.items.map((item:any, index:number) => (
+            <SongRow track={('track' in item) ? item.track : item} index={index + 1} />
           ))}
         </div>
       </div>

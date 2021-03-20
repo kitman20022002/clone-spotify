@@ -1,0 +1,18 @@
+.temp {
+  width: 100%;
+  padding-bottom: 100%;
+  background: #333333;
+  position: relative;
+
+}
+
+.temp .MuiSvgIcon-root {
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom: 0;
+  margin: auto;
+  font-size: 250%;
+  transform:rotate(10deg);
+}

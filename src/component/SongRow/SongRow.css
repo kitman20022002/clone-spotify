@@ -13,7 +13,7 @@
   opacity: 0.8;
 }
 .songRow__number{
-  flex:0.1;
+  width: 4%;
 }
 
 .songRow__info {
@@ -38,6 +38,9 @@
 
 .songRow__album {
   flex:0.1;
+  max-width: 40px;
+  max-height: 40px;
+  width: 100%;
 }
 
 .songRow__album img{

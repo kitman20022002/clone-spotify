@@ -18,6 +18,7 @@ import { useHistory } from 'react-router-dom';
 import { useDataLayerValue } from '../../DataLayer';
 import SpotifyWebPlayBackAPI from '../../utils/spotifyPlayer';
 import { REPEAT_MODE, truncate } from '../../utils/helper';
+import ImageLoad from '../ImageLoad/ImageLoad';
 
 interface IFooterProps {
   spotify: any,
@@ -58,7 +59,6 @@ function Footer(props: IFooterProps) {
 
   // @ts-ignore
   const stateChange = async (state) => {
-    // console.log(state);
     const res = await spotify.containsMySavedTracks([state.track_window.current_track.id]);
 
     dispatch({
@@ -100,12 +100,11 @@ function Footer(props: IFooterProps) {
     toggleMusic('spotify:playlist:37i9dQZEVXcMsjEXCfPif1', device_id);
   };
   const onChangeVolume = (event: any, value: any) => {
-    spotify.setVolume(value);
     dispatch({
       type: 'SET_VOLUME',
       volume: value,
-    }, (data: any) => {
-      console.log(data);
+    }, () => {
+      spotify.setVolume(value);
     });
   };
 
@@ -135,8 +134,6 @@ function Footer(props: IFooterProps) {
 
   const toggleRepeatMode = () => {
     const rMode = repeatModeIndex + 1 > REPEAT_MODE.length - 1 ? 0 : repeatModeIndex + 1;
-
-    console.log('hmm:', REPEAT_MODE, repeatModeIndex, REPEAT_MODE[rMode], rMode);
     dispatch({
       type: 'SET_REPEAT_MODE',
       repeatModeIndex: rMode,
@@ -181,11 +178,13 @@ function Footer(props: IFooterProps) {
     : (
       <div className="footer">
         <div className="footer__left">
-          <img
-            className="footer__albumLogo"
-            src={item?.album.images[0].url}
-            alt={item?.name}
-          />
+          <div className="img__container">
+            <ImageLoad
+              classes="footer__albumLogo"
+              src={item?.album.images[0].url}
+              alt={item?.name}
+            />
+          </div>
           <div className="footer__songInfo">
             <h4>{item && truncate(item?.name, 30, '...')}</h4>
             <p>{item?.artists.map((artist: any) => artist.name).join(', ')}</p>

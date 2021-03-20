@@ -5,13 +5,8 @@ import { getTokenFromUrl } from '../../api/spotify';
 import { useDataLayerValue } from '../../DataLayer';
 import Player from '../../component/Player/Player';
 
-interface IHomePageProps {
-  spotify: any,
-}
-
-function HomePage(props:IHomePageProps) {
-  const [{ token }, dispatch] = useDataLayerValue();
-  const { spotify } = props;
+function HomePage() {
+  const [{ token, spotify }, dispatch] = useDataLayerValue();
   useEffect(() => {
     // eslint-disable-next-line camelcase
     // splay.player.addListener('ready', (device_id: any) => {
@@ -56,7 +51,7 @@ function HomePage(props:IHomePageProps) {
     <div>
       {
         token ? (
-          <Player spotify={spotify} />
+          <Player />
         ) : (
           <Login />
         )

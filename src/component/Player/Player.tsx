@@ -1,24 +1,16 @@
 import React from 'react';
 import './Player.css';
-import SideBar from '../SideBar/SideBar';
 import PlayListBody from '../PlayListBody/PlayListBody';
-import Footer from '../Footer/Footer';
+import Main from '../../pages/HOC/Main';
+import { useDataLayerValue } from '../../DataLayer';
 
-interface IPlayerProps {
-  spotify: any,
-}
-
-function Player(props: IPlayerProps) {
-  const { spotify } = props;
+function Player() {
+  const [{ discoverWeekly }] = useDataLayerValue();
 
   return (
-    <div className="player">
-      <div className="player_body">
-        <SideBar />
-        <PlayListBody />
-      </div>
-      <Footer spotify={spotify} />
-    </div>
+    <Main>
+      <PlayListBody data={discoverWeekly} />
+    </Main>
   );
 }
 

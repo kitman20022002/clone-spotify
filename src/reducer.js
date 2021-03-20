@@ -1,3 +1,5 @@
+import SpotifyWebApi from 'spotify-web-api-js';
+
 export const initialState = {
   user: null,
   playlists: [],
@@ -13,6 +15,7 @@ export const initialState = {
   queueTracks: [],
   isLiked: false,
   repeatModeIndex: 0,
+  spotify: new SpotifyWebApi(),
   // eslint-disable-next-line max-len
 };
 

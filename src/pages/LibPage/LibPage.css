@@ -1,0 +1,21 @@
+.lib_body{
+  background: #121212;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  padding: 30px;
+  height: 100vh;
+  overflow-y: overlay;
+  color: white;
+
+
+}
+
+.lib__container{
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+
+}
+

@@ -40,12 +40,16 @@ class SpotifyWebPlayBackAPI {
       player.addListener('ready', ready);
 
       // @ts-ignore
+      // eslint-disable-next-line no-console
       player.addListener('initialization_error', ({ message }) => { console.error(message); });
       // @ts-ignore
+      // eslint-disable-next-line no-console
       player.addListener('authentication_error', ({ message }) => { console.error(message); });
       // @ts-ignore
+      // eslint-disable-next-line no-console
       player.addListener('account_error', ({ message }) => { console.error(message); });
       // @ts-ignore
+      // eslint-disable-next-line no-console
       player.addListener('playback_error', ({ message }) => { console.error(message); });
 
       // Playback status updates
@@ -56,7 +60,8 @@ class SpotifyWebPlayBackAPI {
       // @ts-ignore
       // eslint-disable-next-line camelcase
       player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);
+        // eslint-disable-next-line no-console
+        console.info('Device ID has gone offline', device_id);
       });
 
       // Connect to the player!

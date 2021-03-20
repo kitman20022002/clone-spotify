@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import './SearchPage.css';
 import SearchIcon from '@material-ui/icons/Search';
-import SideBar from '../../component/SideBar/SideBar';
-import Footer from '../../component/Footer/Footer';
+import { useHistory } from 'react-router-dom';
 import SongRow from '../../component/SongRow/SongRow';
+import Artist from '../../component/Artist/Artist';
+import Main from '../HOC/Main';
+import { useDataLayerValue } from '../../DataLayer';
 
-interface ISearchPageProps {
-  spotify: any,
-}
-
-function SearchPage(props: ISearchPageProps) {
-  const { spotify } = props;
+function SearchPage() {
   const d : any = [];
+  const [{ spotify }] = useDataLayerValue();
   // eslint-disable-next-line no-unused-vars
   const [datas, setDatas] = useState(d);
+  const history = useHistory();
 
   const onChangeSearch = async (e: any) => {
     const res = await spotify.search(
@@ -21,47 +20,69 @@ function SearchPage(props: ISearchPageProps) {
       ['album', 'artist', 'playlist', 'track'],
       { limit: 4 },
     );
-    console.log(res);
     setDatas(res);
   };
 
+  const playlistClick = (e:any, data:any) => {
+    history.push(`playlist/${data.id}`);
+  };
+
+  const albumClick = (e:any, data:any) => {
+    history.push(`album/${data.id}`);
+  };
+
   return (
-    <div className="player">
-      <div className="player_body">
-        <SideBar />
-        <div className="search_body">
-          <div className="searchBar">
-            <SearchIcon />
-            <input
-              placeholder="Search for Artists, Songs, Others"
-              type="text"
-              className="searchInput"
-              onChange={onChangeSearch}
+    <Main>
+      <div className="search_body">
+        <div className="searchBar">
+          <SearchIcon />
+          <input
+            placeholder="Search for Artists, Songs, Others"
+            type="text"
+            className="searchInput"
+            onChange={onChangeSearch}
+          />
+        </div>
+        {datas?.tracks && <h1>Track</h1>}
+        {datas?.tracks?.items.map((data:any) => (
+          <SongRow track={data} />
+        ))}
+
+        {datas?.artists && <h1>Artists</h1>}
+        <div className="artist__row">
+          {datas?.artists?.items.map((data:any) => (
+            <Artist
+              data={data}
+              label="Artist"
+              imgRound
+              click={(e:any) => { playlistClick(e, data); }}
             />
-          </div>
-          <h1>Track</h1>
-          {datas?.tracks?.items.map((data:any) => (
-            <SongRow track={data} />
           ))}
+        </div>
 
-          <h1>Artists</h1>
-          {datas?.tracks?.items.map((data:any) => (
-            <SongRow track={data} />
+        {datas?.albums && <h1>Albums</h1>}
+        <div className="artist__row">
+          {datas?.albums?.items.map((data:any) => (
+            <Artist
+              data={data}
+              label="Artist"
+              click={(e:any) => { albumClick(e, data); }}
+            />
           ))}
+        </div>
 
-          <h1>Albums</h1>
-          {datas?.tracks?.items.map((data:any) => (
-            <SongRow track={data} />
-          ))}
-
-          <h1>Playlists</h1>
-          {datas?.tracks?.items.map((data:any) => (
-            <SongRow track={data} />
+        {datas?.playlists && <h1>Playlists</h1>}
+        <div className="artist__row">
+          {datas?.playlists?.items.map((data:any) => (
+            <Artist
+              data={data}
+              label="Artist"
+              click={(e:any) => { playlistClick(e, data); }}
+            />
           ))}
         </div>
       </div>
-      <Footer spotify={spotify} />
-    </div>
+    </Main>
   );
 }
 

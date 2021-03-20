@@ -1,26 +1,13 @@
 import React from 'react';
 import './QueuePage.css';
-import Footer from '../../component/Footer/Footer';
-import SideBar from '../../component/SideBar/SideBar';
 import QueueBody from '../../component/QueueBody/QueueBody';
-import { useDataLayerValue } from '../../DataLayer';
+import Main from '../HOC/Main';
 
-interface IQueuePageProps {
-  spotify: any,
-}
-
-function QueuePage(props:IQueuePageProps) {
-  const { spotify } = props;
-
-  console.log(useDataLayerValue());
+function QueuePage() {
   return (
-    <div className="player">
-      <div className="player_body">
-        <SideBar />
-        <QueueBody />
-      </div>
-      <Footer spotify={spotify} />
-    </div>
+    <Main>
+      <QueueBody />
+    </Main>
   );
 }
 

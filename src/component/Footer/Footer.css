@@ -73,6 +73,13 @@
   color:#b3b3b3;
 }
 
+
 .footer__right .MuiSvgIcon-root:hover{
   color:white;
+}
+
+.img__container{
+  max-width: 60px;
+  max-height: 60px;
+  width: 100%;
 }

@@ -1,23 +1,32 @@
 import React from 'react';
 import './LibPage.css';
-import Footer from '../../component/Footer/Footer';
-import SideBar from '../../component/SideBar/SideBar';
+import { useHistory } from 'react-router-dom';
+import { useDataLayerValue } from '../../DataLayer';
+import Artist from '../../component/Artist/Artist';
+import Main from '../HOC/Main';
 
-interface ISearchPageProps {
-  spotify: any,
-}
+function LibPage() {
+  const history = useHistory();
+  const [{ playlists }] = useDataLayerValue();
 
-function LibPage(props:ISearchPageProps) {
-  const { spotify } = props;
-
+  const playlistClick = () => {
+    history.push('/artist/');
+  };
   return (
-    <div className="player">
-      <div className="player_body">
-        <SideBar />
-        <div>LibBody</div>
+    <Main>
+      <div className="lib_body">
+        <h1>Playlist</h1>
+        <div className="lib__container">
+          {playlists?.items?.map((playlist: any) => (
+            <Artist
+              data={playlist}
+              label="Artist"
+              click={playlistClick}
+            />
+          ))}
+        </div>
       </div>
-      <Footer spotify={spotify} />
-    </div>
+    </Main>
   );
 }
 
