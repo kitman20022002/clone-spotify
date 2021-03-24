@@ -8,7 +8,7 @@ import Main from '../HOC/Main';
 import { useDataLayerValue } from '../../DataLayer';
 
 function SearchPage() {
-  const d : any = [];
+  const d: any = [];
   const [{ spotify }] = useDataLayerValue();
   // eslint-disable-next-line no-unused-vars
   const [datas, setDatas] = useState(d);
@@ -23,12 +23,16 @@ function SearchPage() {
     setDatas(res);
   };
 
-  const playlistClick = (e:any, data:any) => {
+  const playlistClick = (e: any, data: any) => {
     history.push(`playlist/${data.id}`);
   };
 
-  const albumClick = (e:any, data:any) => {
+  const albumClick = (e: any, data: any) => {
     history.push(`album/${data.id}`);
+  };
+
+  const artistClick = (e: any, data: any) => {
+    history.push(`artist/${data.id}`);
   };
 
   return (
@@ -43,43 +47,51 @@ function SearchPage() {
             onChange={onChangeSearch}
           />
         </div>
-        {datas?.tracks && <h1>Track</h1>}
-        {datas?.tracks?.items.map((data:any) => (
-          <SongRow track={data} />
-        ))}
-
-        {datas?.artists && <h1>Artists</h1>}
-        <div className="artist__row">
-          {datas?.artists?.items.map((data:any) => (
-            <Artist
-              data={data}
-              label="Artist"
-              imgRound
-              click={(e:any) => { playlistClick(e, data); }}
-            />
+        <div className="searchItems">
+          {datas?.tracks && <h1>Track</h1>}
+          {datas?.tracks?.items.map((data: any) => (
+            <SongRow track={data} />
           ))}
-        </div>
 
-        {datas?.albums && <h1>Albums</h1>}
-        <div className="artist__row">
-          {datas?.albums?.items.map((data:any) => (
-            <Artist
-              data={data}
-              label="Artist"
-              click={(e:any) => { albumClick(e, data); }}
-            />
-          ))}
-        </div>
+          {datas?.artists && <h1>Artists</h1>}
+          <div className="artist__row">
+            {datas?.artists?.items.map((data: any) => (
+              <Artist
+                data={data}
+                label="Artist"
+                imgRound
+                click={(e: any) => {
+                  artistClick(e, data);
+                }}
+              />
+            ))}
+          </div>
 
-        {datas?.playlists && <h1>Playlists</h1>}
-        <div className="artist__row">
-          {datas?.playlists?.items.map((data:any) => (
-            <Artist
-              data={data}
-              label="Artist"
-              click={(e:any) => { playlistClick(e, data); }}
-            />
-          ))}
+          {datas?.albums && <h1>Albums</h1>}
+          <div className="artist__row">
+            {datas?.albums?.items.map((data: any) => (
+              <Artist
+                data={data}
+                label="Artist"
+                click={(e: any) => {
+                  albumClick(e, data);
+                }}
+              />
+            ))}
+          </div>
+
+          {datas?.playlists && <h1>Playlists</h1>}
+          <div className="artist__row">
+            {datas?.playlists?.items.map((data: any) => (
+              <Artist
+                data={data}
+                label="Artist"
+                click={(e: any) => {
+                  playlistClick(e, data);
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </Main>

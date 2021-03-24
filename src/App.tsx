@@ -8,6 +8,7 @@ import SearchPage from './pages/SearchPage/SearchPage';
 import LibPage from './pages/LibPage/LibPage';
 import PlaylistPage from './pages/PlaylistPage/PlaylistPage';
 import AlbumPage from './pages/AlbumPage/AlbumPage';
+import ArtistPage from './pages/ArtistPage/ArtistPage';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/collection/playlists" render={() => <LibPage />} />
         <Route path="/playlist/:id" component={PlaylistPage} />
         <Route path="/album/:id" component={AlbumPage} />
+        <Route path="/artist/:id" component={ArtistPage} />
         <Route component={ErrorPage} />
       </Switch>
     </Router>

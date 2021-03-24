@@ -20,7 +20,7 @@
   top:15px;
   color:black;
 }
-.artist__row{
+.search_body .artist__row{
   display: flex;
   justify-content: space-between;
 }
@@ -40,4 +40,8 @@
 .searchInput{
   border: none;
   width: 100%;
+}
+
+.searchItems{
+  padding: 0 0 130px 0;
 }

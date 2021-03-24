@@ -60,7 +60,6 @@ function Footer(props: IFooterProps) {
   // @ts-ignore
   const stateChange = async (state) => {
     const res = await spotify.containsMySavedTracks([state.track_window.current_track.id]);
-
     dispatch({
       type: 'SET_ITEM',
       item: state.track_window.current_track,
@@ -73,6 +72,10 @@ function Footer(props: IFooterProps) {
     dispatch({
       type: 'SET_QUEUE_TRACKS',
       queueTracks: state.track_window.next_tracks,
+    });
+    dispatch({
+      type: 'SET_CONTEXT',
+      context: state.context,
     });
   };
 
@@ -103,9 +106,8 @@ function Footer(props: IFooterProps) {
     dispatch({
       type: 'SET_VOLUME',
       volume: value,
-    }, () => {
-      spotify.setVolume(value);
     });
+    spotify.setVolume(value);
   };
 
   const toggleMute = () => {

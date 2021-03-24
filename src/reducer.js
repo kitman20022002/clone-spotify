@@ -16,6 +16,7 @@ export const initialState = {
   isLiked: false,
   repeatModeIndex: 0,
   spotify: new SpotifyWebApi(),
+  context: null,
   // eslint-disable-next-line max-len
 };
 
@@ -85,6 +86,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         isLiked: action.isLiked,
+      };
+    case 'SET_CONTEXT':
+      return {
+        ...state,
+        context: action.context,
       };
     case 'SET_REPEAT_MODE':
       return {

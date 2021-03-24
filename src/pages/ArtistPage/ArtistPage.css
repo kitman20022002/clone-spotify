@@ -1,0 +1,22 @@
+.artist_body{
+  width: 100%;
+  background-color: black;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.artist_body{
+}
+.artistContent{
+  padding: 0 0 130px 0;
+
+}
+
+.artist_body h1{
+  color:white;
+}
+
+.artist_body .artist__row{
+  display: flex;
+  justify-content: space-between;
+}

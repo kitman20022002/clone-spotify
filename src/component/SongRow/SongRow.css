@@ -1,6 +1,6 @@
 .songRow {
-  margin-left: 20px;
-  padding: 0 20px;
+  margin: 0 20px;
+  padding: 5px 20px;
   display: flex;
   align-items: center;
   z-index: 100;
@@ -18,7 +18,7 @@
 
 .songRow__info {
   margin-left: 20px;
-  flex:0.7;
+  flex:70%;
 }
 
 .songRow__time{

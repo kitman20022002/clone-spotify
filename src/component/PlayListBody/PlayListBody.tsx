@@ -1,14 +1,23 @@
 import React from 'react';
 import './PlayListBody.css';
-import { Favorite, MoreHoriz, PlayCircleFilled } from '@material-ui/icons';
+import {
+  Favorite, MoreHoriz, PlayCircleFilled, PauseCircleFilled,
+} from '@material-ui/icons';
 import Header from '../Header/Header';
 import SongRow from '../SongRow/SongRow';
+import { useDataLayerValue } from '../../DataLayer';
 
 type Props = {
   data: any,
 };
 
 function PlayListBody({ data }: Props) {
+  const [{ context, playing }] = useDataLayerValue();
+
+  function shouldShowPause() {
+    return context?.uri === data?.uri && playing === true;
+  }
+  // eslint-disable-next-line no-unused-vars
   return (
     <div className="body">
       <Header />
@@ -22,13 +31,16 @@ function PlayListBody({ data }: Props) {
       </div>
       <div className="body__songs">
         <div className="body__icons">
-          <PlayCircleFilled className="body__shuffle" />
+          {/* eslint-disable-next-line react/destructuring-assignment */}
+          { shouldShowPause()
+            ? <PauseCircleFilled className="body__shuffle" />
+            : <PlayCircleFilled className="body__shuffle" />}
           <Favorite fontSize="large" />
           <MoreHoriz />
         </div>
         <div className="body__songsList">
-          {data?.tracks?.items.map((item:any, index:number) => (
-            <SongRow track={('track' in item) ? item.track : item} index={index + 1} />
+          {data?.tracks?.items.map((i:any, index:number) => (
+            <SongRow track={('track' in i) ? i.track : i} index={index + 1} />
           ))}
         </div>
       </div>
