@@ -1,0 +1,10 @@
+.artistBanner{
+  position: relative;
+  padding: 50px 20px;
+  overflow: hidden;
+}
+
+.artistBanner img{
+  width: 300px;
+  border-radius: 50%;
+}

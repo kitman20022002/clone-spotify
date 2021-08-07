@@ -59,6 +59,7 @@ function Footer(props: IFooterProps) {
 
   // @ts-ignore
   const stateChange = async (state) => {
+    console.log(state);
     const res = await spotify.containsMySavedTracks([state.track_window.current_track.id]);
     dispatch({
       type: 'SET_ITEM',
@@ -96,7 +97,7 @@ function Footer(props: IFooterProps) {
       });
       dispatch({
         type: 'SET_VOLUME',
-        volume: d.volume_percent,
+        volume: d.volume_percent && 100,
       });
     });
 

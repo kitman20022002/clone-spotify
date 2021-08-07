@@ -9,10 +9,24 @@ import { useDataLayerValue } from '../../DataLayer';
 
 function SearchPage() {
   const d: any = [];
-  const [{ spotify }] = useDataLayerValue();
+  const [{ spotify, deviceId, context }] = useDataLayerValue();
   // eslint-disable-next-line no-unused-vars
   const [datas, setDatas] = useState(d);
   const history = useHistory();
+
+  const play = (data: any) => {
+    if (context?.uri !== data?.uri) {
+      const obj2 = {
+        device_id: deviceId,
+        context_uri: data?.album.uri,
+        offset: {
+          position: 0,
+        },
+        position_ms: 0,
+      };
+      spotify.play(obj2);
+    }
+  };
 
   const onChangeSearch = async (e: any) => {
     const res = await spotify.search(
@@ -36,7 +50,7 @@ function SearchPage() {
   };
 
   return (
-    <Main>
+    <Main page="search">
       <div className="search_body">
         <div className="searchBar">
           <SearchIcon />
@@ -50,7 +64,12 @@ function SearchPage() {
         <div className="searchItems">
           {datas?.tracks && <h1>Track</h1>}
           {datas?.tracks?.items.map((data: any) => (
-            <SongRow track={data} />
+            <SongRow
+              track={data}
+              rowClick={() => {
+                play(data);
+              }}
+            />
           ))}
 
           {datas?.artists && <h1>Artists</h1>}

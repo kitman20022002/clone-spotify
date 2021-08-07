@@ -8,7 +8,7 @@ function Player() {
   const [{ discoverWeekly }] = useDataLayerValue();
 
   return (
-    <Main>
+    <Main page="home">
       <PlayListBody data={discoverWeekly} />
     </Main>
   );

@@ -6,6 +6,9 @@
   display: flex;
   align-items: center;
 }
+.sideBarOption a{
+  color:inherit;
+}
 
 .sideBarOption:hover{
   color:white;
@@ -15,3 +18,10 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.selected{
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,.1);
+  color:white!important;
+}
+

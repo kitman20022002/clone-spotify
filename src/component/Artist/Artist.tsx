@@ -9,7 +9,7 @@ interface IArtistProps {
   click: any,
 }
 
-function Player(props: IArtistProps) {
+function Artist(props: IArtistProps) {
   const {
     data, label, imgRound, click,
   } = props;
@@ -19,7 +19,7 @@ function Player(props: IArtistProps) {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div className="artist" onClick={click}>
       <ImageLoad
-        src={data.images[0].url}
+        src={data.images[0]?.url}
         alt="img"
         classes={imgRound ? 'round' : ''}
         imgRound={!!imgRound}
@@ -30,4 +30,4 @@ function Player(props: IArtistProps) {
   );
 }
 
-export default Player;
+export default Artist;
