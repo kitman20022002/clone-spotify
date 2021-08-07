@@ -6,6 +6,7 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import { useHistory } from 'react-router-dom';
 import SideBarOption from '../SideBarOption/SideBarOption';
 import { useDataLayerValue } from '../../DataLayer';
+import logo from '../../assets/kitify-white.png';
 
 interface Props {
   page?: string;
@@ -22,11 +23,7 @@ function SideBar({ page }: Props) {
   return (
     <div className="sidebar">
       {/* eslint-disable-next-line max-len */}
-      <img
-        src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
-        alt=""
-        className="sidebar__logo"
-      />
+      <img src={logo} alt="kitify" className="sidebar__logo" />
       <SideBarOption title="Home" Icon={HomeIcon} shouldHighLight={page === 'home'} onClick={() => history.push('/')} />
       <SideBarOption
         title="Search"
