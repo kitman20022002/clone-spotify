@@ -32,7 +32,6 @@ function SideBar() {
       {playlists?.items?.map((playlist: any) => (
         <SideBarOption title={playlist.name} />
       ))}
-
     </div>
   );
 }

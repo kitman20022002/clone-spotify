@@ -18,11 +18,7 @@ function LibPage() {
         <h1>Playlist</h1>
         <div className="lib__container">
           {playlists?.items?.map((playlist: any) => (
-            <Artist
-              data={playlist}
-              label="Artist"
-              click={playlistClick}
-            />
+            <Artist data={playlist} label="Artist" click={playlistClick} />
           ))}
         </div>
       </div>

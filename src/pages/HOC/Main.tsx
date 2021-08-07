@@ -5,7 +5,7 @@ import SideBar from '../../component/SideBar/SideBar';
 import { useDataLayerValue } from '../../DataLayer';
 
 type Props = {
-  children: React.ReactChild,
+  children: React.ReactChild;
 };
 
 function Main({ children }: Props) {

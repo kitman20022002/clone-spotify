@@ -2,7 +2,7 @@ import React from 'react';
 import './ArtistBanner.css';
 
 type Props = {
-  artist: any,
+  artist: any;
 };
 
 function ArtistBanner({ artist }: Props) {

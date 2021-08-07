@@ -15,11 +15,7 @@ function SearchPage() {
   const history = useHistory();
 
   const onChangeSearch = async (e: any) => {
-    const res = await spotify.search(
-      e.target.value,
-      ['album', 'artist', 'playlist', 'track'],
-      { limit: 4 },
-    );
+    const res = await spotify.search(e.target.value, ['album', 'artist', 'playlist', 'track'], { limit: 4 });
     setDatas(res);
   };
 

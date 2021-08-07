@@ -6,7 +6,9 @@ function QueueBody() {
   const [{ queueTracks }] = useDataLayerValue();
   return (
     <div className="queue-body">
-      {queueTracks?.map((item:any, index:number) => <SongRow track={item} index={index + 1} />)}
+      {queueTracks?.map((item: any, index: number) => (
+        <SongRow track={item} index={index + 1} />
+      ))}
     </div>
   );
 }

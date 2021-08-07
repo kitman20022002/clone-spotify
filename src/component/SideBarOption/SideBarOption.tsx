@@ -2,12 +2,12 @@ import React from 'react';
 import './SideBarOption.css';
 
 interface ISideBarOptionProps {
-  title: any,
-  Icon?: any,
-  onClick ?: any
+  title: any;
+  Icon?: any;
+  onClick?: any;
 }
 
-function SideBarOption(props:ISideBarOptionProps) {
+function SideBarOption(props: ISideBarOptionProps) {
   // eslint-disable-next-line no-unused-vars
   const { title, Icon, onClick } = props;
   return (

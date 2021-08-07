@@ -21,17 +21,18 @@ import { REPEAT_MODE, truncate } from '../../utils/helper';
 import ImageLoad from '../ImageLoad/ImageLoad';
 
 interface IFooterProps {
-  spotify: any,
+  spotify: any;
 }
 
 function Footer(props: IFooterProps) {
   const { spotify } = props;
   const history = useHistory();
-  const [{
-    item, playing, token, deviceId, volume, mute, previousVolume, shuffle, repeatModeIndex, isLiked,
-  }, dispatch] = useDataLayerValue();
+  const [
+    { item, playing, token, deviceId, volume, mute, previousVolume, shuffle, repeatModeIndex, isLiked },
+    dispatch,
+  ] = useDataLayerValue();
 
-  const toggleMusic = (contextUri ?: string, deviceID?: string) => {
+  const toggleMusic = (contextUri?: string, deviceID?: string) => {
     const d = deviceId === null ? deviceID : deviceId;
     if (playing) {
       spotify.pause();
@@ -87,9 +88,11 @@ function Footer(props: IFooterProps) {
       deviceId: device_id,
     });
     spotify.getMyDevices().then((r: any) => {
-      const d = r.devices.find((device: any) =>
-        // eslint-disable-next-line camelcase,implicit-arrow-linebreak
-        device.id === device_id);
+      const d = r.devices.find(
+        (device: any) =>
+          // eslint-disable-next-line camelcase,implicit-arrow-linebreak
+          device.id === device_id,
+      );
       dispatch({
         type: 'SET_ACTIVE_DEVICE',
         activeDevice: d,
@@ -171,72 +174,52 @@ function Footer(props: IFooterProps) {
     <RepeatIcon className="footer__green" onClick={() => toggleRepeatMode()} />,
   ];
 
-  return !deviceId
-    ? (
-      <div className="footer">
-        <p>Loading...</p>
+  return !deviceId ? (
+    <div className="footer">
+      <p>Loading...</p>
+    </div>
+  ) : (
+    <div className="footer">
+      <div className="footer__left">
+        <div className="img__container">
+          <ImageLoad classes="footer__albumLogo" src={item?.album.images[0].url} alt={item?.name} />
+        </div>
+        <div className="footer__songInfo">
+          <h4>{item && truncate(item?.name, 30, '...')}</h4>
+          <p>{item?.artists.map((artist: any) => artist.name).join(', ')}</p>
+        </div>
+        {!isLiked ? (
+          <FavoriteBorderIcon onClick={addToFavourite} />
+        ) : (
+          <FavoriteIcon className="footer__green" onClick={removeFromFavourite} />
+        )}
       </div>
-    )
-    : (
-      <div className="footer">
-        <div className="footer__left">
-          <div className="img__container">
-            <ImageLoad
-              classes="footer__albumLogo"
-              src={item?.album.images[0].url}
-              alt={item?.name}
-            />
-          </div>
-          <div className="footer__songInfo">
-            <h4>{item && truncate(item?.name, 30, '...')}</h4>
-            <p>{item?.artists.map((artist: any) => artist.name).join(', ')}</p>
-          </div>
-          {!isLiked
-            ? <FavoriteBorderIcon onClick={addToFavourite} />
-            : <FavoriteIcon className="footer__green" onClick={removeFromFavourite} />}
-        </div>
-        <div className="footer__center">
-          <ShuffleIcon className="footer__green" onClick={toggleShuffle} />
-          <SkipPreviousIcon className="footer__icon" onClick={() => skipPrevious()} />
-          {!playing
-            ? (
-              <PlayCircleOutlineIcon
-                fontSize="large"
-                className="footer__icon"
-                onClick={() => toggleMusic()}
-              />
-            )
-            : (
-              <PauseCircleOutline
-                fontSize="large"
-                className="footer__icon"
-                onClick={() => toggleMusic()}
-              />
-            )}
-          <SkipNextIcon className="footer__icon" onClick={() => skipNext()} />
-          {repeatMode[repeatModeIndex]}
-        </div>
-        <div className="footer__right">
-          <Grid container spacing={2}>
-            <Grid item>
-              <PlaylistPlayIcon onClick={() => history.push('/queue')} />
-            </Grid>
-            <Grid item>
-              {volume !== 0
-                ? <VolumeDownIcon onClick={toggleMute} />
-                : <VolumeOffIcon onClick={toggleMute} />}
-            </Grid>
-            <Grid item xs>
-              <Slider
-                aria-labelledby="continuous-slider"
-                value={volume}
-                onChange={onChangeVolume}
-              />
-            </Grid>
+      <div className="footer__center">
+        <ShuffleIcon className="footer__green" onClick={toggleShuffle} />
+        <SkipPreviousIcon className="footer__icon" onClick={() => skipPrevious()} />
+        {!playing ? (
+          <PlayCircleOutlineIcon fontSize="large" className="footer__icon" onClick={() => toggleMusic()} />
+        ) : (
+          <PauseCircleOutline fontSize="large" className="footer__icon" onClick={() => toggleMusic()} />
+        )}
+        <SkipNextIcon className="footer__icon" onClick={() => skipNext()} />
+        {repeatMode[repeatModeIndex]}
+      </div>
+      <div className="footer__right">
+        <Grid container spacing={2}>
+          <Grid item>
+            <PlaylistPlayIcon onClick={() => history.push('/queue')} />
           </Grid>
-        </div>
+          <Grid item>
+            {volume !== 0 ? <VolumeDownIcon onClick={toggleMute} /> : <VolumeOffIcon onClick={toggleMute} />}
+          </Grid>
+          <Grid item xs>
+            <Slider aria-labelledby="continuous-slider" value={volume} onChange={onChangeVolume} />
+          </Grid>
+        </Grid>
       </div>
-    );
+    </div>
+  );
 }
 
 export default Footer;

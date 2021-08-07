@@ -1,14 +1,12 @@
 import React from 'react';
 import './PlayListBody.css';
-import {
-  Favorite, MoreHoriz, PlayCircleFilled, PauseCircleFilled,
-} from '@material-ui/icons';
+import { Favorite, MoreHoriz, PlayCircleFilled, PauseCircleFilled } from '@material-ui/icons';
 import Header from '../Header/Header';
 import SongRow from '../SongRow/SongRow';
 import { useDataLayerValue } from '../../DataLayer';
 
 type Props = {
-  data: any,
+  data: any;
 };
 
 function PlayListBody({ data }: Props) {
@@ -32,15 +30,17 @@ function PlayListBody({ data }: Props) {
       <div className="body__songs">
         <div className="body__icons">
           {/* eslint-disable-next-line react/destructuring-assignment */}
-          { shouldShowPause()
-            ? <PauseCircleFilled className="body__shuffle" />
-            : <PlayCircleFilled className="body__shuffle" />}
+          {shouldShowPause() ? (
+            <PauseCircleFilled className="body__shuffle" />
+          ) : (
+            <PlayCircleFilled className="body__shuffle" />
+          )}
           <Favorite fontSize="large" />
           <MoreHoriz />
         </div>
         <div className="body__songsList">
-          {data?.tracks?.items.map((i:any, index:number) => (
-            <SongRow track={('track' in i) ? i.track : i} index={index + 1} />
+          {data?.tracks?.items.map((i: any, index: number) => (
+            <SongRow track={'track' in i ? i.track : i} index={index + 1} />
           ))}
         </div>
       </div>

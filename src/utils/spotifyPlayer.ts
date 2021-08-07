@@ -1,11 +1,7 @@
 // @ts-ignore
 type SpotifyPlayerCallback = (token: string) => void;
 
-export type WebPlaybackErrors =
-  | 'initialization_error'
-  | 'authentication_error'
-  | 'account_error'
-  | 'playback_error';
+export type WebPlaybackErrors = 'initialization_error' | 'authentication_error' | 'account_error' | 'playback_error';
 
 // eslint-disable-next-line no-unused-vars
 interface WebPlaybackError {
@@ -15,15 +11,15 @@ interface WebPlaybackError {
 class SpotifyWebPlayBackAPI {
   player: any;
 
-  // @ts-ignore
-  // eslint-disable-next-line max-len
-  token: string = 'BQCzPBOrLachLFESJbKQ7eOKvcLo9jsT4GaA2bN-7KlRdY4voWqe2Y7UtXrA_ZRSUHuaWO8_-qdrzZx-GWGoZniA9_Jag9iJgf-EAgfwjMuLGJW9WavuLYu5BMkoMyUSbDqILx53Ge8oo1MQ2cIICNlETxbNCnEy6pLrUOD9plXy-v6euR2_Xrdi1NI9lUw-sstD_yXnw4JAkYMlV7cGWPxud1_Sg-Y6Jy6FJ1hxef9dwEDO-SRqKWAmVK5_vT56Bsyk4ZJV-UBL9rh2QuZx3Ex7Ogr4ExURaJ2lR0PKaZ0z';
+  token: string =
+    // eslint-disable-next-line max-len
+    'BQCzPBOrLachLFESJbKQ7eOKvcLo9jsT4GaA2bN-7KlRdY4voWqe2Y7UtXrA_ZRSUHuaWO8_-qdrzZx-GWGoZniA9_Jag9iJgf-EAgfwjMuLGJW9WavuLYu5BMkoMyUSbDqILx53Ge8oo1MQ2cIICNlETxbNCnEy6pLrUOD9plXy-v6euR2_Xrdi1NI9lUw-sstD_yXnw4JAkYMlV7cGWPxud1_Sg-Y6Jy6FJ1hxef9dwEDO-SRqKWAmVK5_vT56Bsyk4ZJV-UBL9rh2QuZx3Ex7Ogr4ExURaJ2lR0PKaZ0z';
 
   deviceId: any;
 
-  ready : any = false
+  ready: any = false;
 
-  constructor(token : string, ready :any, stateChange: any, webPlayerName ?: string) {
+  constructor(token: string, ready: any, stateChange: any, webPlayerName?: string) {
     // @ts-ignore
     window.onSpotifyWebPlaybackSDKReady = () => {
       // eslint-disable-next-line max-len
@@ -41,16 +37,28 @@ class SpotifyWebPlayBackAPI {
 
       // @ts-ignore
       // eslint-disable-next-line no-console
-      player.addListener('initialization_error', ({ message }) => { console.error(message); });
+      player.addListener('initialization_error', ({ message }) => {
+        // eslint-disable-next-line no-console
+        console.error(message);
+      });
       // @ts-ignore
       // eslint-disable-next-line no-console
-      player.addListener('authentication_error', ({ message }) => { console.error(message); });
+      player.addListener('authentication_error', ({ message }) => {
+        // eslint-disable-next-line no-console
+        console.error(message);
+      });
       // @ts-ignore
       // eslint-disable-next-line no-console
-      player.addListener('account_error', ({ message }) => { console.error(message); });
+      player.addListener('account_error', ({ message }) => {
+        // eslint-disable-next-line no-console
+        console.error(message);
+      });
       // @ts-ignore
       // eslint-disable-next-line no-console
-      player.addListener('playback_error', ({ message }) => { console.error(message); });
+      player.addListener('playback_error', ({ message }) => {
+        // eslint-disable-next-line no-console
+        console.error(message);
+      });
 
       // Playback status updates
       // @ts-ignore
