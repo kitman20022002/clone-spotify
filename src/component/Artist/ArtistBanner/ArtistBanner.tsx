@@ -3,7 +3,7 @@ import './ArtistBanner.css';
 import Testing from '../../Testing/Testing';
 
 type Props = {
-  artist: any,
+  artist: any;
 };
 
 function ArtistBanner({ artist }: Props) {

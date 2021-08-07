@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  RouteComponentProps,
-} from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import './PlaylistPage.css';
 import PlayListBody from '../../component/PlayListBody/PlayListBody';
 import Main from '../HOC/Main';

@@ -55,7 +55,6 @@ function SideBar({ page }: Props) {
           onClick={() => { redirect(playlist); }}
         />
       ))}
-
     </div>
   );
 }

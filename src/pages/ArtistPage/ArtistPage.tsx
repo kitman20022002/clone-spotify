@@ -23,12 +23,10 @@ const ArtistPage: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
 
     spotify.getArtistTopTracks(match.params.id, 'AU').then((res: any) => {
       setArtistTopTrack(res);
-      console.log(res);
     });
 
     spotify.getArtistAlbums(match.params.id, { limit: 4 }).then((res: any) => {
       setArtistAlbums(res);
-      console.log(res);
     });
   };
 
@@ -43,7 +41,6 @@ const ArtistPage: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
   return (
     <Main>
       <div className="artist_body">
-
         <ArtistBanner artist={artist} />
         <div className="artistContent">
           {artistTopTrack && <h1 className="title">Artists Top Track</h1>}

@@ -25,20 +25,20 @@ function HomePage() {
       });
 
       spotify.setAccessToken(t);
-      spotify.getMe().then((us:any) => {
+      spotify.getMe().then((us: any) => {
         dispatch({
           type: 'SET_USER',
           user: us,
         });
       });
 
-      spotify.getUserPlaylists().then((playlists:any) => {
+      spotify.getUserPlaylists().then((playlists: any) => {
         dispatch({
           type: 'SET_PLAYLISTS',
           playlists,
         });
       });
-      spotify.getPlaylist('37i9dQZEVXcMsjEXCfPif1').then((response:any) => {
+      spotify.getPlaylist('37i9dQZEVXcMsjEXCfPif1').then((response: any) => {
         dispatch({
           type: 'SET_DISCOVER_WEEKLY',
           discoverWeekly: response,
@@ -47,17 +47,7 @@ function HomePage() {
     }
   }, []);
 
-  return (
-    <div>
-      {
-        token ? (
-          <Player />
-        ) : (
-          <Login />
-        )
-      }
-    </div>
-  );
+  return <div>{token ? <Player /> : <Login />}</div>;
 }
 
 export default HomePage;
