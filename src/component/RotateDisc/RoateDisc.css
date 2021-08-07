@@ -1,0 +1,37 @@
+.disc__container{
+  position: relative;
+  margin:-40px 0 -28px 0;
+}
+
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+.pause{
+  animation-play-state: paused;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.album__img {
+  position: absolute;
+  width: 159px;
+  height: auto;
+  top: 94px;
+  left: 94px;
+  border-radius: 50%;
+}
+
+.disc__img{
+  box-shadow: none!important;
+  /*position: absolute;*/
+  /*right: -175px;*/
+  /*top: -75px;*/
+  width: 350px!important;
+}

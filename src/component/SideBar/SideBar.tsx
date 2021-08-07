@@ -7,9 +7,18 @@ import { useHistory } from 'react-router-dom';
 import SideBarOption from '../SideBarOption/SideBarOption';
 import { useDataLayerValue } from '../../DataLayer';
 
-function SideBar() {
+interface Props {
+  page?: string,
+}
+
+function SideBar({ page }: Props) {
   const [{ playlists }] = useDataLayerValue();
   const history = useHistory();
+
+  const redirect = (playlist:any) => {
+    history.push(`/playlist/${playlist.id}`);
+  };
+
   return (
     <div className="sidebar">
       {/* eslint-disable-next-line max-len */}
@@ -18,9 +27,20 @@ function SideBar() {
         alt=""
         className="sidebar__logo"
       />
-      <SideBarOption title="Home" Icon={HomeIcon} onClick={() => history.push('/')} />
-      <SideBarOption title="Search" Icon={SearchIcon} onClick={() => history.push('/search')} />
       <SideBarOption
+        title="Home"
+        Icon={HomeIcon}
+        shouldHighLight={page === 'home'}
+        onClick={() => history.push('/')}
+      />
+      <SideBarOption
+        title="Search"
+        Icon={SearchIcon}
+        shouldHighLight={page === 'search'}
+        onClick={() => history.push('/search')}
+      />
+      <SideBarOption
+        shouldHighLight={page === 'yourLib'}
         title="Your Library"
         Icon={LibraryMusicIcon}
         onClick={() => history.push('/collection/playlists')}
@@ -30,7 +50,10 @@ function SideBar() {
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist: any) => (
-        <SideBarOption title={playlist.name} />
+        <SideBarOption
+          title={playlist.name}
+          onClick={() => { redirect(playlist); }}
+        />
       ))}
     </div>
   );

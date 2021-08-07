@@ -18,8 +18,7 @@ const PlaylistPage: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
 
   useEffect(() => {
     getData();
-  }, []);
-
+  }, [match]);
   return (
     <Main>
       <PlayListBody data={d} />

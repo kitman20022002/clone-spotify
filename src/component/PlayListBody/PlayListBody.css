@@ -4,9 +4,16 @@
   overflow-y: overlay;
   flex: 0.8;
   color: white;
+  position: relative;
   background: linear-gradient(transparent, rgba(0, 0, 0, 1));
   background-color: rgb(91, 87, 115);
+  overflow-x:hidden;
+
 }
+
+
+
+
 
 .body__songsList{
   background: #121212;
@@ -21,6 +28,7 @@
   display: flex;
   align-items: flex-end;
   padding: 10px;
+  position: relative;
 }
 
 .body__shuffle {

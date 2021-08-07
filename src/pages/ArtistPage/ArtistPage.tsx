@@ -35,7 +35,7 @@ const ArtistPage: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
   }, []);
 
   const albumClick = (e: any, data: any) => {
-    history.push(`album/${data.id}`);
+    history.push(`/album/${data.id}`);
   };
 
   return (
@@ -43,14 +43,14 @@ const ArtistPage: React.FC<RouteComponentProps<TParams>> = ({ match }) => {
       <div className="artist_body">
         <ArtistBanner artist={artist} />
         <div className="artistContent">
-          {artistTopTrack && <h1>Artists Top Track</h1>}
+          {artistTopTrack && <h1 className="title">Artists Top Track</h1>}
           <div className="topTrack__row">
             {artistTopTrack?.tracks?.map((data: any, index: number) => (
               <SongRow track={data} index={index + 1} />
             ))}
           </div>
 
-          {artistAlbums && <h1>Artists Albums</h1>}
+          {artistAlbums && <h1 className="title">Artists Albums</h1>}
           <div className="artist__row">
             {artistAlbums?.items?.map((data: any) => (
               <Artist

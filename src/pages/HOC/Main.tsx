@@ -4,17 +4,18 @@ import Footer from '../../component/Footer/Footer';
 import SideBar from '../../component/SideBar/SideBar';
 import { useDataLayerValue } from '../../DataLayer';
 
-type Props = {
-  children: React.ReactChild;
-};
+interface Props {
+  children: React.ReactChild,
+  page ?: string
+}
 
-function Main({ children }: Props) {
+function Main({ children, page }: Props) {
   const [{ spotify }] = useDataLayerValue();
 
   return (
     <div className="player">
       <div className="player_body">
-        <SideBar />
+        <SideBar page={page} />
         {children}
       </div>
       <Footer spotify={spotify} />
