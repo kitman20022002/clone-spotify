@@ -1,3 +1,8 @@
+### Description
+![alt](https://s3.ap-southeast-2.amazonaws.com/resources.kitmanyiu.com/images/spotify-code.png)
+![alt](https://s3.ap-southeast-2.amazonaws.com/resources.kitmanyiu.com/images/spotify-screen.png)
+
+
 ### Installation
 - npm install
 - npm start

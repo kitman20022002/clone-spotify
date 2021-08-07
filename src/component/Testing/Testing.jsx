@@ -27,10 +27,10 @@ function Testing() {
             col = 0xff760f;
           }
           if (i === 2) {
-            col = 0x009D64;
+            col = 0x009d64;
           }
           if (i === 3) {
-            col = 0x6319FF;
+            col = 0x6319ff;
           }
           const material = new THREE.MeshPhongMaterial({
             color: col,
@@ -65,17 +65,19 @@ function Testing() {
         center.x /= group.children.length;
         center.y /= group.children.length;
         center.z /= group.children.length;
+        // eslint-disable-next-line no-console
         console.log(center, group, group.children[0].position);
       },
 
       // called when loading is in progresses
       (xhr) => {
-        // eslint-disable-next-line no-mixed-operators
-        console.log(`${xhr.loaded / xhr.total * 100}% loaded`);
+        // eslint-disable-next-line no-mixed-operators,no-console
+        console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
       },
       // called when loading has errors
       // eslint-disable-next-line no-unused-vars
       (error) => {
+        // eslint-disable-next-line no-console
         console.log('An error happened', error);
       },
     );
@@ -83,7 +85,7 @@ function Testing() {
     scene.add(group);
 
     const ca = document.getElementById('canvas_player');
-    const color = 0xFFFFFF;
+    const color = 0xffffff;
     const intensity = 1;
     const light = new THREE.DirectionalLight(color, intensity);
     light.position.set(0, 10, 5);
@@ -91,7 +93,7 @@ function Testing() {
     scene.add(light);
     scene.add(light.target);
     // eslint-disable-next-line max-len,no-mixed-operators
-    const camera = new THREE.PerspectiveCamera(75, ca.offsetWidth / (402), 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, ca.offsetWidth / 402, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(ca.offsetWidth, 402);
 
@@ -108,9 +110,9 @@ function Testing() {
         // v.rotation.y += 1000.05;
         // v.position.y = 4 + Math.cos(v.rotation.y);
 
-        camera.position.x = (center.x + 30 * Math.sin(pp));
+        camera.position.x = center.x + 30 * Math.sin(pp);
         camera.position.y = center.y > 0 ? center.y + 20 : center.y + 20;
-        camera.position.z = (center.z + 30 * Math.cos(pp));
+        camera.position.z = center.z + 30 * Math.cos(pp);
         camera.lookAt(center.x, center.y, center.z);
       }
 
@@ -119,9 +121,7 @@ function Testing() {
     animate();
   }, []);
 
-  return (
-    <div className="Testing" />
-  );
+  return <div className="Testing" />;
 }
 
 export default Testing;

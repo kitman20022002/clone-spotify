@@ -9,7 +9,7 @@ function LibPage() {
   const history = useHistory();
   const [{ playlists }] = useDataLayerValue();
 
-  const playlistClick = (playlist:any) => {
+  const playlistClick = (playlist: any) => {
     history.push(`/playlist/${playlist.id}`);
   };
   return (
@@ -21,7 +21,9 @@ function LibPage() {
             <Artist
               data={playlist}
               label="Artist"
-              click={() => { playlistClick(playlist); }}
+              click={() => {
+                playlistClick(playlist);
+              }}
             />
           ))}
         </div>

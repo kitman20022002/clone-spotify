@@ -1,12 +1,12 @@
 .footer {
   position: fixed;
   bottom: 0;
-  height: 65px;
-  width: 97%;
+  width: 100%;
   background-color: #282828;
   justify-content: space-between;
   padding: 20px;
   display: flex;
+  box-sizing: border-box;
 }
 
 .footer__left {
@@ -72,7 +72,6 @@
 .footer__right .MuiSvgIcon-root{
   color:#b3b3b3;
 }
-
 
 .footer__right .MuiSvgIcon-root:hover{
   color:white;

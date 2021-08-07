@@ -5,35 +5,24 @@ import ImageLoad from '../ImageLoad/ImageLoad';
 import PlayerLoader from '../PlayerLoader/PlayerLoader';
 
 interface ISongRowProps {
-  track: any,
-  index?: number,
-  rowClick?: any,
-  isPlaying?: boolean
+  track: any;
+  index?: number;
+  rowClick?: any;
+  isPlaying?: boolean;
 }
 
 function SongRow(props: ISongRowProps) {
-  const {
-    track, index, rowClick, isPlaying,
-  } = props;
+  const { track, index, rowClick, isPlaying } = props;
   return (
-    // eslint-disable-next-line max-len
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div className="songRow" onClick={rowClick}>
-      {index && (
-        <div className="songRow__number">
-          {isPlaying ? <PlayerLoader /> : index}
+      {index && <div className="songRow__number">{isPlaying ? <PlayerLoader /> : index}</div>}
+      {track?.album && (
+        <div className="songRow__album">
+          <ImageLoad src={track?.album?.images[0].url} alt="" />
         </div>
       )}
-      {
-        track?.album && (
-          <div className="songRow__album">
-            <ImageLoad src={track?.album?.images[0].url} alt="" />
-          </div>
-        )
-      }
       <div className="songRow__info">
         <h1>{track.name}</h1>
-
       </div>
       <div className="songRow__time">
         <p>{msToTime(track.duration_ms)}</p>

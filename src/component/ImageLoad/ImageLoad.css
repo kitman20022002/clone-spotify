@@ -1,9 +1,10 @@
 .temp {
   width: 100%;
-  padding-bottom: 100%;
   background: #333333;
   position: relative;
-
+  max-width: 208px;
+  height: 208px;
+  margin: auto;
 }
 
 .temp .MuiSvgIcon-root {

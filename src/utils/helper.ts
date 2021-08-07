@@ -28,4 +28,20 @@ export const msToTime = (duration: number) => {
   return portions.join(':');
 };
 
+// The Lodash version has more feature like a maximum wait time,
+// leading and trailing function invoking.
+// It has also been tested on every major browser and it has very good performance on every browser.
+// You are also 100% sure that the Lodash version is bug free
+export const debounce = (func: any, wait: any) => {
+  let timeout: any = null;
+  return (...args: any) => {
+    const context: any = this;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
+};
+
 export const REPEAT_MODE = ['off', 'track', 'context'];

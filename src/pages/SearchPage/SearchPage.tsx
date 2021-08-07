@@ -6,6 +6,7 @@ import SongRow from '../../component/SongRow/SongRow';
 import Artist from '../../component/Artist/Artist';
 import Main from '../HOC/Main';
 import { useDataLayerValue } from '../../DataLayer';
+import { debounce } from '../../utils/helper';
 
 function SearchPage() {
   const d: any = [];
@@ -54,7 +55,7 @@ function SearchPage() {
             placeholder="Search for Artists, Songs, Others"
             type="text"
             className="searchInput"
-            onChange={onChangeSearch}
+            onChange={debounce((event: any) => onChangeSearch(event), 300)}
           />
         </div>
         <div className="searchItems">

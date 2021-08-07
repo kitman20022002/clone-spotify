@@ -8,14 +8,14 @@ import SideBarOption from '../SideBarOption/SideBarOption';
 import { useDataLayerValue } from '../../DataLayer';
 
 interface Props {
-  page?: string,
+  page?: string;
 }
 
 function SideBar({ page }: Props) {
   const [{ playlists }] = useDataLayerValue();
   const history = useHistory();
 
-  const redirect = (playlist:any) => {
+  const redirect = (playlist: any) => {
     history.push(`/playlist/${playlist.id}`);
   };
 
@@ -27,12 +27,7 @@ function SideBar({ page }: Props) {
         alt=""
         className="sidebar__logo"
       />
-      <SideBarOption
-        title="Home"
-        Icon={HomeIcon}
-        shouldHighLight={page === 'home'}
-        onClick={() => history.push('/')}
-      />
+      <SideBarOption title="Home" Icon={HomeIcon} shouldHighLight={page === 'home'} onClick={() => history.push('/')} />
       <SideBarOption
         title="Search"
         Icon={SearchIcon}
@@ -52,7 +47,9 @@ function SideBar({ page }: Props) {
       {playlists?.items?.map((playlist: any) => (
         <SideBarOption
           title={playlist.name}
-          onClick={() => { redirect(playlist); }}
+          onClick={() => {
+            redirect(playlist);
+          }}
         />
       ))}
     </div>
