@@ -15,18 +15,20 @@ window.IntersectionObserver = jest.fn(function () {
 });
 
 test('after input should see sydney', async () => {
-  axios.get.mockImplementationOnce(() => Promise.resolve({
-    data: {
-      data: [
-        {
-          title: 'Sydney',
-          location_type: 'City',
-          woeid: 1105779,
-          latt_long: '-33.869629, 151.206955',
-        },
-      ],
-    },
-  }));
+  axios.get.mockImplementationOnce(() =>
+    Promise.resolve({
+      data: {
+        data: [
+          {
+            title: 'Sydney',
+            location_type: 'City',
+            woeid: 1105779,
+            latt_long: '-33.869629, 151.206955',
+          },
+        ],
+      },
+    }),
+  );
 
   const { getByTestId, findByText } = render(<HomePage />);
   const city = getByTestId('city');
