@@ -1,8 +1,8 @@
-### Description
+### KITIFY
 ![alt](https://s3.ap-southeast-2.amazonaws.com/resources.kitmanyiu.com/images/spotify-code.png)
 ![alt](https://s3.ap-southeast-2.amazonaws.com/resources.kitmanyiu.com/images/spotify-screen.png)
 
-### Performance Optimization 
+#### Performance Optimization
 - [x] Debounce and Throttling
 - [ ] Lazy Loader
 - [ ] Using Immutable Data Structures
@@ -15,11 +15,27 @@
 - [ ] Memoize React Components
 - [ ] Using Web Workers for CPU Extensive Tasks
 - [ ] Server-side Rendering
+- [ ] Sprite Sheet
 
-### Installation
+### Stack
+- React
+- Spotify API
+
+### Setup
 - npm install
 - npm start
-- npm run test
+
+### Prerequisites
+- Node
+
+### Test
+- In Progress
+
+### Coding Standard
+- Airbnb
+
+### Contributing
+- Kitman Yiu (kitmanwork@gmail.com)
 
 
 

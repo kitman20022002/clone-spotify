@@ -17,7 +17,7 @@ import { PauseCircleOutline } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 import { useDataLayerValue } from '../../DataLayer';
 import SpotifyWebPlayBackAPI from '../../utils/spotifyPlayer';
-import { REPEAT_MODE, truncate } from '../../utils/helper';
+import { maxCutLength, REPEAT_MODE, truncate } from '../../utils/helper';
 import ImageLoad from '../ImageLoad/ImageLoad';
 
 interface IFooterProps {
@@ -60,7 +60,6 @@ function Footer(props: IFooterProps) {
 
   // @ts-ignore
   const stateChange = async (state) => {
-    console.log(state);
     const res = await spotify.containsMySavedTracks([state.track_window.current_track.id]);
     dispatch({
       type: 'SET_ITEM',
@@ -187,7 +186,7 @@ function Footer(props: IFooterProps) {
         </div>
         <div className="footer__songInfo">
           <h4>{item && truncate(item?.name, 30, '...')}</h4>
-          <p>{item?.artists.map((artist: any) => artist.name).join(', ')}</p>
+          <p>{maxCutLength(item?.artists.map((artist: any) => artist.name).join(', '), 30)}</p>
         </div>
         {!isLiked ? (
           <FavoriteBorderIcon onClick={addToFavourite} />

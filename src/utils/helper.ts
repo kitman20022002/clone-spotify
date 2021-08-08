@@ -44,4 +44,14 @@ export const debounce = (func: any, wait: any) => {
   };
 };
 
+export const maxCutLength = (str: string, maxLength: number) => {
+  if (!str) {
+    return str;
+  }
+  if (str.length > maxLength) {
+    return `${str.substr(0, maxLength - 2)}....`;
+  }
+  return str;
+};
+
 export const REPEAT_MODE = ['off', 'track', 'context'];

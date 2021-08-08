@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './index.css';
+import { CookiesProvider } from 'react-cookie';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { DataLayer } from './DataLayer';
@@ -8,9 +9,11 @@ import reducer, { initialState } from './reducer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataLayer initialState={initialState} reducer={reducer}>
-      <App />
-    </DataLayer>
+    <CookiesProvider>
+      <DataLayer initialState={initialState} reducer={reducer}>
+        <App />
+      </DataLayer>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

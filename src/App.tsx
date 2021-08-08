@@ -9,12 +9,14 @@ import LibPage from './pages/LibPage/LibPage';
 import PlaylistPage from './pages/PlaylistPage/PlaylistPage';
 import AlbumPage from './pages/AlbumPage/AlbumPage';
 import ArtistPage from './pages/ArtistPage/ArtistPage';
+import Player from './component/Player/Player';
 
 export default function App() {
   return (
     <Router>
       <Switch>
         <Route path="/" exact render={() => <HomePage />} />
+        <Route path="/player" exact render={() => <Player />} />
         <Route path="/queue" render={() => <QueuePage />} />
         <Route path="/search" render={() => <SearchPage />} />
         <Route path="/collection/playlists" render={() => <LibPage />} />

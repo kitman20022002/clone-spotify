@@ -1,14 +1,15 @@
 .sidebar {
   height: 100vh;
   flex: 0.2;
-  background-color: #040404;
+  background-color: #1d2026;
   min-width: 230px;
   padding: 0 10px;
+  max-width: 241px;
 }
 
 .sidebar__logo {
-  height: 70px;
-  padding: 10px;
+  height: 50px;
+  padding: 20px 10px;
   margin-right: auto;
 }
 

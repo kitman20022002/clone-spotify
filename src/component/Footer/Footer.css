@@ -7,6 +7,8 @@
   padding: 20px;
   display: flex;
   box-sizing: border-box;
+  z-index: 1000;
+  opacity: 0.9;
 }
 
 .footer__left {
@@ -60,7 +62,7 @@
 
 
 .footer__green, .MuiSlider-root {
-  color: #1ed15e!important;
+  color: #198ffd !important;
 }
 
 .footer__icon:hover,
