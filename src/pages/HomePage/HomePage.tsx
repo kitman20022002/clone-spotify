@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './HomePage.css';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router-dom';
-import Login from '../../component/Login/Login';
 import { getTokenFromUrl, loginUrl } from '../../api/spotify';
 import { useDataLayerValue } from '../../DataLayer';
 import Player from '../../component/Player/Player';
