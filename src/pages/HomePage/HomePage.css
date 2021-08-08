@@ -300,10 +300,10 @@ a:visited, a:focus, a:active, a {
   width: 3.03%;
   height: 4.04%;
   background: rgba(0, 191, 251, 0.32);
-  -moz-animation: example2 15s linear infinite;
-  -webkit-animation: example2 15s linear infinite;
-  -o-animation: example2 15s linear infinite;
-  animation: example2 15s linear infinite;
+  -moz-animation: example2 10s linear infinite;
+  -webkit-animation: example2 10s linear infinite;
+  -o-animation: example2 10s linear infinite;
+  animation: example2 10s linear infinite;
 }
 
 .hero-figure-box-10::after {
@@ -322,33 +322,10 @@ a:visited, a:focus, a:active, a {
 
 
 @keyframes example2 {
-  16%   {transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
+  0%   {transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
     -22deg
   ) rotateY(
     0deg
-  )}
-  32% { transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
-    -22deg
-  ) rotateY(
-    180deg
-  )}
-
-  48% { transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
-    -22deg
-  ) rotateY(
-    180deg
-  )}
-
-  64% { transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
-    -22deg
-  ) rotateY(
-    360deg
-  )}
-
-  80% { transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
-    -22deg
-  ) rotateY(
-    360deg
   )}
   100% { transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(
     -22deg
