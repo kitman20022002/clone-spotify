@@ -169,7 +169,7 @@ function HomePage() {
           </div>
         </footer>
       </main>
-      <div>{token ? <Player /> : <Login />}</div>
+      <div>{token && <Player />}</div>
     </div>
   );
 }
