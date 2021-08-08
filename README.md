@@ -25,6 +25,9 @@
 - npm install
 - npm start
 
+### Getting Started
+* npm start
+
 ### Prerequisites
 - Node
 
@@ -32,13 +35,18 @@
 - In Progress
 
 ### Coding Standard
+- BEM
 - Airbnb
 
 ### Contributing
 - Kitman Yiu (kitmanwork@gmail.com)
 
+### License
 
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+### Acknowledgments
+* [Spotify](https://www.spotify.com)
 
 
 
